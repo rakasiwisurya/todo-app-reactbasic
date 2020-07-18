@@ -4,18 +4,24 @@ class TodoComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            todos: ['wash up', 'eat some cheese', 'take a nap']
+            todoList: ['wash up', 'eat some cheese', 'take a nap', 'buy something']
         };
     }
     
     render() {
+        const todoList = this.state.todoList;
+
         return(
             <div id="todo-list">
                 <p>The busiest people have the most leisure</p>
                 <ul>
-                    <li>{this.state.todos[0]}</li>
-                    <li>{this.state.todos[1]}</li>
-                    <li>{this.state.todos[2]}</li>
+                    {todoList.map((todoItem, index) => {
+                      return (
+                        <li key={index}>
+                            {todoItem}
+                        </li>
+                      );
+                    })}
                 </ul>
             </div>
         );
