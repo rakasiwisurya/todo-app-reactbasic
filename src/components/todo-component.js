@@ -1,4 +1,5 @@
 import React from 'react';
+import TodoItem from './todo-item';
 
 class TodoComponent extends React.Component {
     constructor(props) {
@@ -6,21 +7,27 @@ class TodoComponent extends React.Component {
         this.state = {
             todoList: ['wash up', 'eat some cheese', 'take a nap', 'buy something']
         };
+        this.onDelete = this.onDelete.bind(this);
+    }
+
+    onDelete(item) {
+        const updateTodoList = this.state.todoList.filter((val, index) => {
+            return item !== val;
+        });
+        this.setState({
+            todoList: updateTodoList
+        });
     }
     
     render() {
-        const todoList = this.state.todoList;
-
         return(
             <div id="todo-list">
                 <p>The busiest people have the most leisure</p>
                 <ul>
-                    {todoList.map((todoItem, index) => {
-                      return (
-                        <li key={index}>
-                            {todoItem}
-                        </li>
-                      );
+                    {this.state.todoList.map((todoItem, index) => {
+                        return (
+                            <TodoItem item={todoItem} key={index} onDelete={this.onDelete} />
+                        );
                     })}
                 </ul>
             </div>
