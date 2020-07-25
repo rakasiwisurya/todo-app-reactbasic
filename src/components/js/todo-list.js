@@ -1,6 +1,7 @@
 import React from 'react';
 import TodoItem from './todo-item';
 import '../css/todo-list.css';
+import AddItem from './add-item';
 
 class TodoComponent extends React.Component {
     constructor(props) {
@@ -9,12 +10,33 @@ class TodoComponent extends React.Component {
             todoList: ['wash up', 'eat some cheese', 'take a nap', 'buy something']
         };
         this.onDelete = this.onDelete.bind(this);
+        this.onAdd = this.onAdd.bind(this);
+    }
+
+    componentWillMount() {
+        console.log('componentWillMount');
+    }
+
+    componentDidMount() {
+        console.log('componentDidMount');
+    }
+
+    componentWillUpdate() {
+        console.log('componentWillUpdate');
     }
 
     onDelete(item) {
         const updateTodoList = this.state.todoList.filter((val, index) => {
             return item !== val;
         });
+        this.setState({
+            todoList: updateTodoList
+        });
+    }
+
+    onAdd(item) {
+        const updateTodoList = this.state.todoList;
+        updateTodoList.push(item);
         this.setState({
             todoList: updateTodoList
         });
@@ -31,6 +53,7 @@ class TodoComponent extends React.Component {
                         );
                     })}
                 </ul>
+                <AddItem onAdd={this.onAdd} />
             </div>
         );
     }

@@ -13,7 +13,7 @@
     flex-grow: 9;
 }
 
-.item-remove{
+.item-delete{
     flex-basis: 0;
     flex-grow: 1;
     text-align: right;
