@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import TodoItem from './todo-item';
 import AddItem from './add-item';
 import '../css/todo-list.css';
@@ -33,6 +34,7 @@ class TodoList extends React.Component {
     render() {
         return(
             <div id="todo-list">
+                <Link to={'/about'}>About</Link>
                 <p>The busiest people have the most leisure</p>
                 <ul>
                     {this.state.todoList.map((todoItem, index) => {
