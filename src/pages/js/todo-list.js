@@ -1,9 +1,9 @@
 import React from 'react';
 import TodoItem from './todo-item';
-import '../css/todo-list.css';
 import AddItem from './add-item';
+import '../css/todo-list.css';
 
-class TodoComponent extends React.Component {
+class TodoList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,20 +13,8 @@ class TodoComponent extends React.Component {
         this.onAdd = this.onAdd.bind(this);
     }
 
-    componentWillMount() {
-        console.log('componentWillMount');
-    }
-
-    componentDidMount() {
-        console.log('componentDidMount');
-    }
-
-    componentWillUpdate() {
-        console.log('componentWillUpdate');
-    }
-
     onDelete(item) {
-        const updateTodoList = this.state.todoList.filter((val, index) => {
+        const updateTodoList = this.state.todoList.filter((val) => {
             return item !== val;
         });
         this.setState({
@@ -59,4 +47,4 @@ class TodoComponent extends React.Component {
     }
 }
 
-export default TodoComponent;
+export default TodoList;

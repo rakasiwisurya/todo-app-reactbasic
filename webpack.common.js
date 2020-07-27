@@ -8,6 +8,12 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
     },
+    devServer: {
+        contentBase: path.join(__dirname, 'src'),
+        inline: true,
+        hot: true,
+        historyApiFallback: true
+    },
     module: {
         rules: [
             {
